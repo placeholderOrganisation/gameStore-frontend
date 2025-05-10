@@ -9,9 +9,9 @@ import {
   useTheme,
   Button,
 } from "@mui/material";
-import { categories } from "../../../data";
+import { APP_PAGES, categories } from "../../../data";
 import { isDesktop } from "../../../utils/browser";
-import { useNavigate } from "react-router-dom";
+import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 // Example icons (replace with official SVGs if you have them)
 import {
   Computer,
@@ -38,8 +38,7 @@ const getGameCount = (category: string) => {
 const BrowseByCategorySection: React.FC = () => {
   const isDesktopView = isDesktop();
   const theme = useTheme();
-  const navigate = useNavigate();
-
+  const navigateForInAppUrl = useNavigateForInAppUrl();
   return (
     <Box sx={{ py: 8, backgroundColor: theme.palette.background.paper }}>
       <Container maxWidth="lg">
@@ -55,7 +54,7 @@ const BrowseByCategorySection: React.FC = () => {
           {categories.map((category, index) => (
             <Card
               key={index}
-              onClick={() => navigate("/games")}
+              onClick={() => navigateForInAppUrl(APP_PAGES.catalog)}
               sx={{
                 width: { xs: "100%", sm: "48%", md: "23%" },
                 height: 300,
