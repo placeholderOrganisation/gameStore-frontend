@@ -13,13 +13,14 @@ import {
   useTheme,
 } from "@mui/material";
 import { Star as StarIcon } from "@mui/icons-material";
-import { featuredGames } from "../../../data";
+import { APP_PAGES, featuredGames } from "../../../data";
 import { isDesktop } from "../../../utils/browser";
+import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 
 const FeaturedGamesSection: React.FC = () => {
   const isDesktopView = isDesktop();
   const theme = useTheme();
-
+  const navigateForInAppUrl = useNavigateForInAppUrl();
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       <Stack spacing={4} sx={{ width: "100%" }}>
@@ -133,6 +134,7 @@ const FeaturedGamesSection: React.FC = () => {
             variant="contained"
             color="secondary"
             sx={{ width: ["100%", "25%"] }}
+            onClick={() => navigateForInAppUrl(APP_PAGES.catalog)}
           >
             Show More
           </Button>

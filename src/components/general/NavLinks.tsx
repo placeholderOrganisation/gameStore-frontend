@@ -8,7 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { useNavigate } from "react-router-dom";
+import useNavigateForInAppUrl from "../../hooks/useNavigateForInAppUrl";
 import type { NavbarLink } from "../../types";
 
 interface NavLinkProps {
@@ -18,11 +18,10 @@ interface NavLinkProps {
 
 const NavLinks = (props: NavLinkProps) => {
   const { linksToRender, handleNavLinkClick } = props;
-  const navigate = useNavigate();
-
+  const navigateForInAppUrl = useNavigateForInAppUrl();
   const onLinkClick = (path: string) => {
     handleNavLinkClick();
-    navigate(path);
+    navigateForInAppUrl(path);
   };
 
   return (

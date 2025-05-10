@@ -1,3 +1,7 @@
+export const APP_PAGES = {
+  home: "/",
+  catalog: "/catalog",
+};
 
 export const featuredGames = [
   {
@@ -71,4 +75,4 @@ export const socialLinks = [
     url: "https://wa.me/1234567890", // Replace with your WhatsApp number
     icon: "WhatsApp",
   },
-]; 
+];

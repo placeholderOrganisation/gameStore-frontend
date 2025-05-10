@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Typography, Box, Button, Stack } from "@mui/material";
 import { keyframes } from "@emotion/react";
+import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
+import { APP_PAGES } from "../../../data";
 
 const fadeIn = keyframes`
   from {
@@ -14,6 +16,7 @@ const fadeIn = keyframes`
 `;
 
 const HeroSection: React.FC = () => {
+  const navigateForInAppUrl = useNavigateForInAppUrl();
   return (
     <Box
       sx={{
@@ -69,6 +72,7 @@ const HeroSection: React.FC = () => {
                     boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
                   },
                 }}
+                onClick={() => navigateForInAppUrl(APP_PAGES.catalog)}
               >
                 Browse Games
               </Button>
@@ -109,4 +113,4 @@ const HeroSection: React.FC = () => {
   );
 };
 
-export default HeroSection; 
+export default HeroSection;
