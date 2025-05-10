@@ -10,6 +10,10 @@ export const featuredGames = [
     price: 29.99,
     rating: 5,
     image: "/placeholder.svg?height=300&width=225",
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     title: "Ghost of Tsushima",
@@ -17,6 +21,10 @@ export const featuredGames = [
     price: 34.99,
     rating: 4,
     image: "/placeholder.svg?height=300&width=225",
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     title: "Halo Infinite",
@@ -24,13 +32,21 @@ export const featuredGames = [
     price: 39.99,
     rating: 4,
     image: "/placeholder.svg?height=300&width=225",
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
-    title: "The Legend of Zelda: Breath of the Wild",
+    title: "The Legend of Zelda",
     platform: "Nintendo Switch",
     price: 44.99,
     rating: 5,
     image: "/placeholder.svg?height=300&width=225",
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
 
@@ -75,4 +91,48 @@ export const socialLinks = [
     url: "https://wa.me/1234567890", // Replace with your WhatsApp number
     icon: "WhatsApp",
   },
+];
+
+// Dummy data based on the Game model
+export const dummyGames = [
+  {
+    title: "The Last of Us Part II",
+    platform: "PS4",
+    rating: 5,
+    price: 29.99,
+    image: "/placeholder.svg?height=300&width=225",
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    title: "Ghost of Tsushima",
+    platform: "PS4",
+    rating: 4,
+    price: 34.99,
+    image: "/placeholder.svg?height=300&width=225",
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  // Add more dummy games here
+];
+
+export const platforms = [
+  "All",
+  "PS4",
+  "PS5",
+  "Xbox Series X",
+  "Nintendo Switch",
+  "PC",
+];
+export const genres = ["All", "Action", "Adventure", "RPG", "Sports", "Strategy"];
+export const sortOptions = [
+  { value: "name_asc", label: "Name (A-Z)" },
+  { value: "name_desc", label: "Name (Z-A)" },
+  { value: "price_asc", label: "Price (Low to High)" },
+  { value: "price_desc", label: "Price (High to Low)" },
+  { value: "rating_desc", label: "Rating (High to Low)" },
 ];
