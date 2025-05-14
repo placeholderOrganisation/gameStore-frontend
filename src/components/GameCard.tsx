@@ -9,18 +9,7 @@ import {
   Stack,
   useTheme,
 } from "@mui/material";
-
-type Game = {
-  title: string;
-  platform: string;
-  price: number;
-  rating: number;
-  image: string;
-  genre: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-};
+import type { Game } from "../types";
 
 type GameCardProps = {
   game: Game;
@@ -39,6 +28,7 @@ const GameCard: React.FC<GameCardProps> = ({
     <Card
       onClick={onClick}
       sx={{
+        mb: 2,
         minWidth: 275,
         borderRadius: 3,
         boxShadow: theme.shadows[3],
@@ -61,16 +51,14 @@ const GameCard: React.FC<GameCardProps> = ({
       <Box sx={{ position: "relative" }}>
         <CardMedia
           component="img"
-          image={game.image}
-          alt={game.title}
+          image={game.imgs?.[0] || ""}
+          alt={game.name}
           sx={{
             borderRadius: "12px 12px 0 0",
             height: 180,
             objectFit: "cover",
             width: "100%",
             background: "background.paper",
-            borderBottom: shouldShowCardContent ? `1px solid` : "none",
-            borderColor: "grey.600",
           }}
         />
         {/* Price Chip at top right */}
@@ -114,7 +102,7 @@ const GameCard: React.FC<GameCardProps> = ({
                   WebkitBoxOrient: "vertical",
                 }}
               >
-                {game.title}
+                {game.name}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={1} alignItems="center">

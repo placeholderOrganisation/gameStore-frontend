@@ -9,13 +9,9 @@ import {
   Stack,
   Box,
   Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Rating,
   type SelectChangeEvent
 } from "@mui/material";
-import { dummyGames, platforms, genres, sortOptions } from "../../data";
+import { featuredGames, platforms, genres, sortOptions } from "../../data";
 import GameCard from '../../components/GameCard';
 
 const CatalogPage: React.FC = () => {
@@ -28,9 +24,9 @@ const CatalogPage: React.FC = () => {
     setSortBy(event.target.value);
   };
 
-  const filteredGames = dummyGames
+  const filteredGames = featuredGames
     .filter(game => {
-      const matchesSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = game.name.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesPlatform = selectedPlatform === 'All' || game.platform === selectedPlatform;
       const matchesGenre = selectedGenre === 'All' || game.genre === selectedGenre;
       
@@ -39,9 +35,9 @@ const CatalogPage: React.FC = () => {
     .sort((a, b) => {
       switch (sortBy) {
         case 'name_asc':
-          return a.title.localeCompare(b.title);
+          return a.name.localeCompare(b.name);
         case 'name_desc':
-          return b.title.localeCompare(a.title);
+          return b.name.localeCompare(a.name);
         case 'price_asc':
           return a.price - b.price;
         case 'price_desc':
@@ -111,7 +107,7 @@ const CatalogPage: React.FC = () => {
         {/* Games Grid */}
         <Stack 
           direction="row" 
-          spacing={3} 
+          spacing={2} 
           flexWrap="wrap" 
           useFlexGap
           sx={{ 
@@ -122,7 +118,7 @@ const CatalogPage: React.FC = () => {
           }}
         >
           {filteredGames.map((game) => (
-            <GameCard key={game.title} game={game} />
+            <GameCard key={game.name} game={game} />
           ))}
         </Stack>
 

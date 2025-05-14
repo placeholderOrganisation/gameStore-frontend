@@ -5,48 +5,76 @@ export const APP_PAGES = {
 
 export const featuredGames = [
   {
-    title: "The Last of Us Part II",
+    name: "The Last of Us Part II",
     platform: "PS4",
     price: 29.99,
     rating: 5,
-    image: "/placeholder.svg?height=300&width=225",
+    imgs: ["/placeholder.svg?height=300&width=225"],
     genre: "Action",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
+    featured: true,
   },
   {
-    title: "Ghost of Tsushima",
+    name: "Ghost of Tsushima",
     platform: "PS4",
     price: 34.99,
     rating: 4,
-    image: "/placeholder.svg?height=300&width=225",
+    imgs: ["/placeholder.svg?height=300&width=225"],
     genre: "Action",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
+    featured: true,
   },
   {
-    title: "Halo Infinite",
+    name: "Halo Infinite",
     platform: "Xbox Series X",
     price: 39.99,
     rating: 4,
-    image: "/placeholder.svg?height=300&width=225",
+    imgs: ["/placeholder.svg?height=300&width=225"],
     genre: "Action",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
+    featured: true,
   },
   {
-    title: "The Legend of Zelda",
+    name: "The Legend of Zelda",
     platform: "Nintendo Switch",
     price: 44.99,
     rating: 5,
-    image: "/placeholder.svg?height=300&width=225",
+    imgs: ["/placeholder.svg?height=300&width=225"],
     genre: "Action",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
+    featured: true,
+  },
+  {
+    name: "Halo Infinite",
+    platform: "Xbox Series X",
+    price: 39.99,
+    rating: 4,
+    imgs: ["/placeholder.svg?height=300&width=225"],
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    featured: true,
+  },
+  {
+    name: "The Legend of Zelda",
+    platform: "Nintendo Switch",
+    price: 44.99,
+    rating: 5,
+    imgs: ["/placeholder.svg?height=300&width=225"],
+    genre: "Action",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    featured: true,
   },
 ];
 
@@ -93,33 +121,6 @@ export const socialLinks = [
   },
 ];
 
-// Dummy data based on the Game model
-export const dummyGames = [
-  {
-    title: "The Last of Us Part II",
-    platform: "PS4",
-    rating: 5,
-    price: 29.99,
-    image: "/placeholder.svg?height=300&width=225",
-    genre: "Action",
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    title: "Ghost of Tsushima",
-    platform: "PS4",
-    rating: 4,
-    price: 34.99,
-    image: "/placeholder.svg?height=300&width=225",
-    genre: "Action",
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  // Add more dummy games here
-];
-
 export const platforms = [
   "All",
   "PS4",
@@ -128,7 +129,14 @@ export const platforms = [
   "Nintendo Switch",
   "PC",
 ];
-export const genres = ["All", "Action", "Adventure", "RPG", "Sports", "Strategy"];
+export const genres = [
+  "All",
+  "Action",
+  "Adventure",
+  "RPG",
+  "Sports",
+  "Strategy",
+];
 export const sortOptions = [
   { value: "name_asc", label: "Name (A-Z)" },
   { value: "name_desc", label: "Name (Z-A)" },
