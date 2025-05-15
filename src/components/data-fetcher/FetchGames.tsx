@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../general/loading";
 import { Alert, Container } from "@mui/material";
 import { setGames } from "../../store/features/games/gamesSlice";
-import { getGames } from "../../services/gamesService";
+import { getGames } from "../../services/api";
 import { useAppDispatch } from "../../store/hooks";
 
 const FetchGames = () => {

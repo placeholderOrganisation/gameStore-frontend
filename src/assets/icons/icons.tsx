@@ -390,3 +390,44 @@ export const Catalog = ({
     </svg>
   );
 };
+
+export const FavoriteBorder = ({
+  width,
+  height,
+}: {
+  width: number;
+  height: number;
+}) => {
+  return (
+    <svg
+      version="1.1"
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 30 30"
+      width={width}
+      height={height}
+    >
+      <g>
+        <path
+          fill="#ff5093"
+          stroke="#ff5093"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M15,8.7l-1.6-1.7c-2.3-2.5-6.2-2.6-8.7-0.2l0,0c-2.2,2.2-2.3,5.7-0.2,8L7,17.3l8,8.7l8-8.7l1-1.1l-8.3-8.3
+		L15,8.7z"
+        />
+      </g>
+      <path
+        fill="#B7257F"
+        stroke="#B7257F"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-miterlimit="10"
+        d="M25.3,6.7L25.3,6.7c-2.4-2.4-6.4-2.2-8.7,0.2l-0.9,1l8.3,8.3l1.4-1.5C27.6,12.4,27.5,8.9,25.3,6.7z"
+      />
+    </svg>
+  );
+};

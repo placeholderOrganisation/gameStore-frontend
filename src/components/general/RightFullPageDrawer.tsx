@@ -68,7 +68,7 @@ const RightFullPageDrawer = (props: RightFullPageDrawerProps) => {
             position: "absolute",
             bottom: 0,
             left: 0,
-            width: "-webkit-fill-available",
+            width: "100%",
             zIndex: 1000,
             bgcolor: "background.paper",
           }}

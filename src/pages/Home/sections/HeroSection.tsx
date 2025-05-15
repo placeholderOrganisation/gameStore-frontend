@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Typography, Box, Button, Stack } from "@mui/material";
 import { keyframes } from "@emotion/react";
 import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 import { APP_PAGES } from "../../../data";
+import GameRequestForm from "../../../components/GameRequestForm/GameRequestForm";
 
 const fadeIn = keyframes`
   from {
@@ -16,6 +17,7 @@ const fadeIn = keyframes`
 `;
 
 const HeroSection: React.FC = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const navigateForInAppUrl = useNavigateForInAppUrl();
   return (
     <Box
@@ -80,6 +82,7 @@ const HeroSection: React.FC = () => {
                 variant="outlined"
                 color="inherit"
                 size="large"
+                onClick={() => setIsFormOpen(true)}
                 sx={{
                   borderColor: "rgba(255, 255, 255, 0.7)",
                   "&:hover": {
@@ -109,6 +112,11 @@ const HeroSection: React.FC = () => {
           </Box>
         </Stack>
       </Container>
+      <GameRequestForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        mode={2}
+      />
     </Box>
   );
 };
