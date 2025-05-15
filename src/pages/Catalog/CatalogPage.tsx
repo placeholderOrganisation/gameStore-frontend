@@ -9,7 +9,8 @@ import {
   Stack,
   Box,
   Typography,
-  type SelectChangeEvent
+  type SelectChangeEvent,
+  Grid
 } from "@mui/material";
 import { featuredGames, platforms, genres, sortOptions } from "../../data";
 import GameCard from '../../components/GameCard';
@@ -105,22 +106,13 @@ const CatalogPage: React.FC = () => {
         </Stack>
 
         {/* Games Grid */}
-        <Stack 
-          direction="row" 
-          spacing={2} 
-          flexWrap="wrap" 
-          useFlexGap
-          sx={{ 
-            '& > *': { 
-              flexBasis: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)', lg: 'calc(25% - 18px)' },
-              maxWidth: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)', lg: 'calc(25% - 18px)' }
-            }
-          }}
-        >
+        <Grid container spacing={2}>
           {filteredGames.map((game) => (
-            <GameCard key={game.name} game={game} />
+            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={game.name}>
+              <GameCard game={game} />
+            </Grid>
           ))}
-        </Stack>
+        </Grid>
 
         {filteredGames.length === 0 && (
           <Box sx={{ textAlign: 'center', py: 4 }}>
