@@ -6,6 +6,7 @@ export const APP_PAGES = {
 export const featuredGames = [
   {
     name: "The Last of Us Part II",
+    formattedName: "The Last of Us Part II",
     platform: "PS4",
     price: 29.99,
     rating: 5,
@@ -18,6 +19,7 @@ export const featuredGames = [
   },
   {
     name: "Ghost of Tsushima",
+    formattedName: "Ghost of Tsushima",
     platform: "PS4",
     price: 34.99,
     rating: 4,
@@ -30,6 +32,7 @@ export const featuredGames = [
   },
   {
     name: "Halo Infinite",
+    formattedName: "Halo Infinite",
     platform: "Xbox Series X",
     price: 39.99,
     rating: 4,
@@ -42,6 +45,7 @@ export const featuredGames = [
   },
   {
     name: "The Legend of Zelda",
+    formattedName: "The Legend of Zelda",
     platform: "Nintendo Switch",
     price: 44.99,
     rating: 5,
@@ -54,6 +58,7 @@ export const featuredGames = [
   },
   {
     name: "Halo Infinite",
+    formattedName: "Halo Infinite",
     platform: "Xbox Series X",
     price: 39.99,
     rating: 4,
@@ -66,6 +71,7 @@ export const featuredGames = [
   },
   {
     name: "The Legend of Zelda",
+    formattedName: "The Legend of Zelda",
     platform: "Nintendo Switch",
     price: 44.99,
     rating: 5,
