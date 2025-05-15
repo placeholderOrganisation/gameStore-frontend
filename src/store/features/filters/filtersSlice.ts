@@ -30,7 +30,7 @@ const filtersSlice = createSlice({
     setSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
     },
-    resetFilters: (state) => {
+    resetFilters: () => {
       return initialState;
     },
   },
