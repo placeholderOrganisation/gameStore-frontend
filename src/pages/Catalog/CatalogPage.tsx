@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 import { 
   Container, 
   TextField, 
@@ -12,35 +11,27 @@ import {
   Typography,
   type SelectChangeEvent,
   Grid,
-  Alert,
 } from "@mui/material";
 import { platforms, genres, sortOptions } from "../../data";
 import GameCard from '../../components/GameCard';
-import { getGames } from '../../services/gamesService';
-import Loading from '../../components/general/loading';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+  setSearchQuery,
+  setSelectedPlatform,
+  setSelectedGenre,
+  setSortBy,
+} from '../../store/features/filters/filtersSlice';
 
 const CatalogPage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedPlatform, setSelectedPlatform] = useState('All');
-  const [selectedGenre, setSelectedGenre] = useState('All');
-  const [sortBy, setSortBy] = useState('name_asc');
-
-  const { data: games = [], isLoading, error } = useQuery({
-    queryKey: ['games'],
-    queryFn: getGames,
-  });
+  const dispatch = useAppDispatch();
+  const { games } = useAppSelector((state) => state.games);
+  const { searchQuery, selectedPlatform, selectedGenre, sortBy } = useAppSelector(
+    (state) => state.filters
+  );
 
   const handleSortChange = (event: SelectChangeEvent) => {
-    setSortBy(event.target.value);
+    dispatch(setSortBy(event.target.value));
   };
-
-  if (isLoading) return <Loading />;
-  
-  if (error) return (
-    <Container>
-      <Alert severity="error">Error loading games: {error.message}</Alert>
-    </Container>
-  );
 
   const filteredGames = games
     .filter(game => {
@@ -80,14 +71,14 @@ const CatalogPage: React.FC = () => {
             fullWidth
             label="Search Games"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => dispatch(setSearchQuery(e.target.value))}
           />
           <FormControl fullWidth>
             <InputLabel>Platform</InputLabel>
             <Select
               value={selectedPlatform}
               label="Platform"
-              onChange={(e) => setSelectedPlatform(e.target.value)}
+              onChange={(e) => dispatch(setSelectedPlatform(e.target.value))}
             >
               {platforms.map(platform => (
                 <MenuItem key={platform} value={platform}>{platform}</MenuItem>
@@ -99,7 +90,7 @@ const CatalogPage: React.FC = () => {
             <Select
               value={selectedGenre}
               label="Genre"
-              onChange={(e) => setSelectedGenre(e.target.value)}
+              onChange={(e) => dispatch(setSelectedGenre(e.target.value))}
             >
               {genres.map(genre => (
                 <MenuItem key={genre} value={genre}>{genre}</MenuItem>

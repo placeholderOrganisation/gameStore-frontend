@@ -1,11 +1,17 @@
 import React from "react";
 import { Container, Typography, Button, Stack, Grid } from "@mui/material";
-import { APP_PAGES, featuredGames } from "../../../data";
+import { APP_PAGES } from "../../../data";
 import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 import GameCard from "../../../components/GameCard";
-
+import FetchGames from "../../../components/data-fetcher/FetchGames";
+import { useAppSelector } from "../../../store/hooks";
 const FeaturedGamesSection: React.FC = () => {
+  const { games } = useAppSelector((state) => state.games);
   const navigateForInAppUrl = useNavigateForInAppUrl();
+
+  if (games.length === 0) return <FetchGames />;
+
+  const featuredGames = games.filter((game) => game.featured);
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -15,7 +21,7 @@ const FeaturedGamesSection: React.FC = () => {
         </Stack>
         <Grid container spacing={2}>
           {featuredGames.map((game, index) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
+            <Grid size={{ sm: 6, md: 4, lg: 3 }} key={index}>
               <GameCard game={game} shouldShowCardContent={false} />
             </Grid>
           ))}
