@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { 
   Container, 
   TextField, 
@@ -10,10 +11,13 @@ import {
   Box,
   Typography,
   type SelectChangeEvent,
-  Grid
+  Grid,
+  Alert,
 } from "@mui/material";
-import { featuredGames, platforms, genres, sortOptions } from "../../data";
+import { platforms, genres, sortOptions } from "../../data";
 import GameCard from '../../components/GameCard';
+import { getGames } from '../../services/gamesService';
+import Loading from '../../components/general/loading';
 
 const CatalogPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,11 +25,24 @@ const CatalogPage: React.FC = () => {
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [sortBy, setSortBy] = useState('name_asc');
 
+  const { data: games = [], isLoading, error } = useQuery({
+    queryKey: ['games'],
+    queryFn: getGames,
+  });
+
   const handleSortChange = (event: SelectChangeEvent) => {
     setSortBy(event.target.value);
   };
 
-  const filteredGames = featuredGames
+  if (isLoading) return <Loading />;
+  
+  if (error) return (
+    <Container>
+      <Alert severity="error">Error loading games: {error.message}</Alert>
+    </Container>
+  );
+
+  const filteredGames = games
     .filter(game => {
       const matchesSearch = game.name.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesPlatform = selectedPlatform === 'All' || game.platform === selectedPlatform;
@@ -108,7 +125,7 @@ const CatalogPage: React.FC = () => {
         {/* Games Grid */}
         <Grid container spacing={2}>
           {filteredGames.map((game) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={game.name}>
+            <Grid size={{ sm: 6, md: 4, lg: 3 }} key={game.name}>
               <GameCard game={game} />
             </Grid>
           ))}

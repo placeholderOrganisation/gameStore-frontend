@@ -8,6 +8,7 @@ import {
   Box,
   Stack,
   useTheme,
+  Rating,
 } from "@mui/material";
 import type { Game } from "../types";
 
@@ -29,7 +30,7 @@ const GameCard: React.FC<GameCardProps> = ({
       onClick={onClick}
       sx={{
         mb: 2,
-        minWidth: 275,
+        width: 171,
         borderRadius: 3,
         boxShadow: theme.shadows[3],
         background: theme.palette.background.paper,
@@ -51,14 +52,12 @@ const GameCard: React.FC<GameCardProps> = ({
       <Box sx={{ position: "relative" }}>
         <CardMedia
           component="img"
-          image={game.imgs?.[0] || ""}
-          alt={game.name}
+          image={game.imgs.small_url || ""}
+          alt={game.formattedName}
           sx={{
             borderRadius: "12px 12px 0 0",
-            height: 180,
-            objectFit: "cover",
-            width: "100%",
             background: "background.paper",
+            height: 215,
           }}
         />
         {/* Price Chip at top right */}
@@ -102,14 +101,25 @@ const GameCard: React.FC<GameCardProps> = ({
                   WebkitBoxOrient: "vertical",
                 }}
               >
-                {game.name}
+                {game.formattedName}
               </Typography>
             </Stack>
-            <Stack direction="row" spacing={1} alignItems="center">
-              <Stack direction="row" spacing={1} alignItems="center">
-                <Chip variant="outlined" label={game.platform} size="small" />
-                <Chip variant="outlined" label={game.genre} size="small" />
-              </Stack>
+            <Stack spacing={1}>
+              <Rating
+                name="read-only"
+                value={game.rating}
+                readOnly
+                precision={0.5}
+                size="small"
+              />
+              <Chip
+                variant="outlined"
+                label={game.platform.toUpperCase()}
+                size="small"
+                sx={{
+                  width: "fit-content",
+                }}
+              />
             </Stack>
           </Stack>
         </CardContent>
