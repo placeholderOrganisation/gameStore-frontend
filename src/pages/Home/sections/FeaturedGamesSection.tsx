@@ -5,6 +5,7 @@ import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 import GameCard from "../../../components/GameCard";
 import FetchGames from "../../../components/data-fetcher/FetchGames";
 import { useAppSelector } from "../../../store/hooks";
+
 const FeaturedGamesSection: React.FC = () => {
   const { games } = useAppSelector((state) => state.games);
   const navigateForInAppUrl = useNavigateForInAppUrl();
@@ -14,33 +15,60 @@ const FeaturedGamesSection: React.FC = () => {
   const featuredGames = games.filter((game) => game.featured);
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <Stack spacing={4} sx={{ width: "100%" }}>
-        <Stack direction="row" justifyContent="center" alignItems="center">
-          <Typography variant="h2">Featured Games</Typography>
-        </Stack>
-        <Grid container spacing={2}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Stack spacing={3} alignItems="center">
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: "center",
+            fontWeight: 600,
+            fontSize: { xs: "1.5rem", md: "2rem" },
+          }}
+        >
+          Featured Games
+        </Typography>
+
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            width: "100%",
+            justifyContent: "center",
+          }}
+        >
           {featuredGames.map((game, index) => (
-            <Grid size={{ sm: 6, md: 4, lg: 3 }} key={index}>
+            <Grid
+              size={{
+                xs: 6,
+                sm: 4,
+                md: 3,
+                lg: 2.4,
+              }}
+              key={index}
+            >
               <GameCard game={game} shouldShowCardContent={false} />
             </Grid>
           ))}
         </Grid>
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="center"
-          sx={{ width: "100%" }}
+
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{
+            mt: 2,
+            py: 1.5,
+            borderRadius: 2,
+            textTransform: "none",
+            fontSize: "1rem",
+            fontWeight: 600,
+            maxWidth: { xs: "100%", md: "300px" },
+            mx: "auto",
+          }}
+          onClick={() => navigateForInAppUrl(APP_PAGES.catalog)}
         >
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{ width: ["100%", "25%"] }}
-            onClick={() => navigateForInAppUrl(APP_PAGES.catalog)}
-          >
-            Show More
-          </Button>
-        </Stack>
+          View All Games
+        </Button>
       </Stack>
     </Container>
   );
