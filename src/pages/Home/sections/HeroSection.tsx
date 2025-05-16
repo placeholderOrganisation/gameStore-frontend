@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Typography, Box, Button, Stack, Grid } from "@mui/material";
+import { Container, Typography, Box, Button, Stack } from "@mui/material";
 import { keyframes } from "@emotion/react";
 import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 import { APP_PAGES } from "../../../data";
