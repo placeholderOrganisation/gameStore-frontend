@@ -20,44 +20,44 @@ const NavLinks = (props: NavLinkProps) => {
   const { linksToRender, handleNavLinkClick } = props;
   const navigateForInAppUrl = useNavigateForInAppUrl();
   const onLinkClick = (path: string) => {
+    if (path) {
+      navigateForInAppUrl(path);
+    }
     handleNavLinkClick();
-    navigateForInAppUrl(path);
   };
 
   return (
     <Box>
-      <nav aria-label="secondary mailbox folders">
-        <List>
-          {linksToRender.map((navbarLink, index) => {
-            return (
-              <Box key={index}>
-                <ListItem
-                  disablePadding
-                  onClick={() => {
-                    onLinkClick(navbarLink.path);
+      <List>
+        {linksToRender.map((navbarLink, index) => {
+          return (
+            <Box key={index}>
+              <ListItem
+                disablePadding
+                onClick={() => {
+                  onLinkClick(navbarLink.path);
+                }}
+              >
+                <ListItemButton
+                  sx={{
+                    px: 0,
                   }}
                 >
-                  <ListItemButton
+                  <ListItemText primary={navbarLink.name} />
+                  <ListItemIcon
                     sx={{
-                      px: 0,
+                      minWidth: "unset",
                     }}
                   >
-                    <ListItemText primary={navbarLink.name} />
-                    <ListItemIcon
-                      sx={{
-                        minWidth: "unset",
-                      }}
-                    >
-                      <ChevronRightIcon />
-                    </ListItemIcon>
-                  </ListItemButton>
-                </ListItem>
-                <Divider />
-              </Box>
-            );
-          })}
-        </List>
-      </nav>
+                    <ChevronRightIcon />
+                  </ListItemIcon>
+                </ListItemButton>
+              </ListItem>
+              <Divider />
+            </Box>
+          );
+        })}
+      </List>
     </Box>
   );
 };

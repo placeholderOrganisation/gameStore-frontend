@@ -18,11 +18,11 @@ import NavLinks from "../general/NavLinks";
 import type { NavbarLink } from "../../types";
 import { APP_PAGES } from "../../data";
 import useNavigateForInAppUrl from "../../hooks/useNavigateForInAppUrl";
+import GameRequestForm from "../GameRequestForm/GameRequestForm";
 
 const linksToRender: NavbarLink[] = [
   { name: "Home", path: APP_PAGES.home },
   { name: "Games", path: APP_PAGES.catalog },
-  { name: "Consoles", path: APP_PAGES.catalog },
 ];
 
 const Navbar: React.FC = () => {
@@ -31,6 +31,7 @@ const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const handleDrawerClose = () => setDrawerOpen(false);
   const navigateForInAppUrl = useNavigateForInAppUrl();
+  const [isFormOpen, setIsFormOpen] = useState(false);
   return (
     <>
       <AppBar
@@ -117,9 +118,20 @@ const Navbar: React.FC = () => {
               linksToRender={linksToRender}
               handleNavLinkClick={handleDrawerClose}
             />
+            <Box>
+              <NavLinks
+                linksToRender={[{ name: "Sell Your Game", path: "" }]}
+                handleNavLinkClick={() => setIsFormOpen(true)}
+              />
+            </Box>
           </Box>
         </Stack>
       </RightFullPageDrawer>
+      <GameRequestForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        mode={2}
+      />
     </>
   );
 };

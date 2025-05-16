@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
                   },
                 }}
               >
-                Sell Your Games
+                Sell Your Game
               </Button>
             </Stack>
           </Box>
