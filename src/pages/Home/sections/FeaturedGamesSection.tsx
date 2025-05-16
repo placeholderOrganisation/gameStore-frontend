@@ -60,14 +60,12 @@ const FeaturedGamesSection: React.FC = () => {
             py: 1.5,
             borderRadius: 2,
             textTransform: "none",
-            fontSize: "1rem",
-            fontWeight: 600,
             maxWidth: { xs: "100%", md: "300px" },
             mx: "auto",
           }}
           onClick={() => navigateForInAppUrl(APP_PAGES.catalog)}
         >
-          View All Games
+          Browse Games
         </Button>
       </Stack>
     </Container>

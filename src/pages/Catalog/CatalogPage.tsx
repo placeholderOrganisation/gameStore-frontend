@@ -114,7 +114,7 @@ const CatalogPage: React.FC = () => {
               alignItems="center"
               sx={{
                 my: 3,
-                mx: [2, 0],
+                mx: 2,
               }}
             >
               <Button

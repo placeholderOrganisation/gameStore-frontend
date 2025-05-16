@@ -1,6 +1,5 @@
 import { Box, Drawer, Stack, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { isDesktop } from "../../utils/browser";
 
 interface RightFullPageDrawerProps {
   open: boolean;
@@ -22,8 +21,6 @@ const RightFullPageDrawer = (props: RightFullPageDrawerProps) => {
     ...otherprops
   } = props;
 
-  const isDesktopView = isDesktop();
-
   return (
     <Drawer
       anchor="right"
@@ -32,7 +29,7 @@ const RightFullPageDrawer = (props: RightFullPageDrawerProps) => {
       {...otherprops}
       sx={{
         "& .MuiDrawer-paper": {
-          width: isDesktopView ? "20vw" : "-webkit-fill-available",
+          width: { xs: "100%", md: "25vw" },
           height: "100vh",
           p: 2,
           overflow: allowOverflow ? "auto" : "visible",
