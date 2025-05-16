@@ -2,15 +2,15 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface FiltersState {
   searchQuery: string;
-  selectedPlatform: string;
-  selectedGenre: string;
+  selectedPlatforms: string[];
+  selectedGenres: string[];
   sortBy: string;
 }
 
 const initialState: FiltersState = {
   searchQuery: '',
-  selectedPlatform: 'All',
-  selectedGenre: 'All',
+  selectedPlatforms: ['All'],
+  selectedGenres: ['All'],
   sortBy: 'name_asc',
 };
 
@@ -21,11 +21,11 @@ const filtersSlice = createSlice({
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
     },
-    setSelectedPlatform: (state, action: PayloadAction<string>) => {
-      state.selectedPlatform = action.payload;
+    setSelectedPlatforms: (state, action: PayloadAction<string[]>) => {
+      state.selectedPlatforms = action.payload;
     },
-    setSelectedGenre: (state, action: PayloadAction<string>) => {
-      state.selectedGenre = action.payload;
+    setSelectedGenres: (state, action: PayloadAction<string[]>) => {
+      state.selectedGenres = action.payload;
     },
     setSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
@@ -38,8 +38,8 @@ const filtersSlice = createSlice({
 
 export const {
   setSearchQuery,
-  setSelectedPlatform,
-  setSelectedGenre,
+  setSelectedPlatforms,
+  setSelectedGenres,
   setSortBy,
   resetFilters,
 } = filtersSlice.actions;

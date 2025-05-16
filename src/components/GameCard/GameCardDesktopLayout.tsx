@@ -119,6 +119,7 @@ export const GameCardDesktopLayout: React.FC<GameCardLayoutProps> = ({
                     fontSize: "0.75rem",
                     color: "common.black",
                     backgroundColor: "grey.300",
+                    textTransform: "capitalize",
                   }}
                 />
               </Stack>

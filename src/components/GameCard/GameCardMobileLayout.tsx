@@ -115,6 +115,7 @@ export const GameCardMobileLayout: React.FC<GameCardLayoutProps> = ({
                   sx={{
                     color: "common.black",
                     backgroundColor: "grey.300",
+                    textTransform: "capitalize",
                   }}
                 />
               </Stack>

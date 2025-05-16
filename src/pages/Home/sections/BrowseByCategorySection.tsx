@@ -19,7 +19,7 @@ import {
   Xbox,
   Nintendo,
 } from "../../../assets/icons/icons";
-
+import { useAppSelector } from "../../../store/hooks";
 const iconMap: Record<string, React.ReactNode> = {
   PlayStation: <PlayStation width={35} height={35} />,
   Xbox: <Xbox width={35} height={35} />,
@@ -28,10 +28,15 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 const getGameCount = (category: string) => {
-  if (category === "PlayStation") return 124;
-  if (category === "Xbox") return 87;
-  if (category === "Nintendo") return 56;
-  if (category === "PC Games") return 200;
+  const { games } = useAppSelector((state) => state.games);
+  if (category === "PlayStation")
+    return games.filter((game) => game.platform.includes("ps")).length;
+  if (category === "Xbox")
+    return games.filter((game) => game.platform.includes("xbox")).length;
+  if (category === "Nintendo")
+    return games.filter((game) => game.platform.includes("nintendo")).length;
+  if (category === "PC Games")
+    return games.filter((game) => game.platform.includes("pc")).length;
   return 0;
 };
 
@@ -124,7 +129,6 @@ const BrowseByCategorySection: React.FC = () => {
                     background: alpha(theme.palette.primary.main, 0.12),
                   },
                 }}
-                // endIcon={<SportsEsportsIcon sx={{ fontSize: 18 }} />}
               >
                 Browse Games
               </Button>

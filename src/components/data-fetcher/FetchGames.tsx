@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../general/loading";
 import { Alert, Container } from "@mui/material";
-import { setGames } from "../../store/features/games/gamesSlice";
+import { setGames, setGenres, setPlatforms } from "../../store/features/games/gamesSlice";
 import { getGames } from "../../services/api";
 import { useAppDispatch } from "../../store/hooks";
 
@@ -17,6 +17,10 @@ const FetchGames = () => {
   useEffect(() => {
     if (gamesData.length > 0) {
       dispatch(setGames(gamesData));
+      const genres = gamesData.map((game) => game.genre).sort();
+      const platforms = gamesData.map((game) => game.platform).sort();
+      dispatch(setGenres(genres));
+      dispatch(setPlatforms(platforms));
     }
   }, [gamesData, dispatch]);
 

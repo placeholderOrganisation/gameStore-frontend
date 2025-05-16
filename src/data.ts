@@ -24,12 +24,13 @@ export const featuredGames = [
     },
     genre: "Action",
     featured: true,
-    description: "The Last of Us Part II is a 2020 action-adventure game developed by Naughty Dog and published by Sony Interactive Entertainment. It is the sequel to the 2013 game The Last of Us and the second installment in the The Last of Us series.",  
+    description:
+      "The Last of Us Part II is a 2020 action-adventure game developed by Naughty Dog and published by Sony Interactive Entertainment. It is the sequel to the 2013 game The Last of Us and the second installment in the The Last of Us series.",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-]
+];
 
 export const categories = [
   { name: "PlayStation", image: "/placeholder.svg?height=200&width=200" },
@@ -74,22 +75,6 @@ export const socialLinks = [
   },
 ];
 
-export const platforms = [
-  "All",
-  "PS4",
-  "PS5",
-  "Xbox Series X",
-  "Nintendo Switch",
-  "PC",
-];
-export const genres = [
-  "All",
-  "Action",
-  "Adventure",
-  "RPG",
-  "Sports",
-  "Strategy",
-];
 export const sortOptions = [
   { value: "name_asc", label: "Name (A-Z)" },
   { value: "name_desc", label: "Name (Z-A)" },

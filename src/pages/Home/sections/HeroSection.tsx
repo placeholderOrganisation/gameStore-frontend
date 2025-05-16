@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Container, Typography, Box, Button, Stack } from "@mui/material";
+import { Container, Typography, Box, Button, Stack, Grid } from "@mui/material";
 import { keyframes } from "@emotion/react";
 import useNavigateForInAppUrl from "../../../hooks/useNavigateForInAppUrl";
 import { APP_PAGES } from "../../../data";
 import GameRequestForm from "../../../components/GameRequestForm/GameRequestForm";
-
+import { useAppSelector } from "../../../store/hooks";
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -19,6 +19,7 @@ const fadeIn = keyframes`
 const HeroSection: React.FC = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const navigateForInAppUrl = useNavigateForInAppUrl();
+  const { games } = useAppSelector((state) => state.games);
   return (
     <Box
       sx={{
@@ -99,16 +100,60 @@ const HeroSection: React.FC = () => {
             display={{ xs: "none", md: "flex" }}
             justifyContent="center"
           >
-            <img
-              src="/placeholder.svg?height=400&width=600"
-              alt="Featured Games"
-              style={{
-                borderRadius: 8,
-                width: "100%",
-                maxWidth: 600,
-                animation: `${fadeIn} 0.7s ease-out`,
+            <Box
+              sx={{
+                position: "relative",
+                width: 450,
+                height: 240,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
-            />
+            >
+              {games.slice(0, 5).map((game, idx) => {
+                const offsets = [
+                  { rotate: -30, left: 0, z: 1 },
+                  { rotate: -18, left: 75, z: 2 },
+                  { rotate: -6, left: 150, z: 3 },
+                  { rotate: 6, left: 225, z: 3 },
+                  { rotate: 18, left: 300, z: 2 },
+                  { rotate: 30, left: 375, z: 1 },
+                ];
+                const { rotate, left, z } = offsets[idx] || { rotate: 0, left: 0, z: 1 };
+                return (
+                  <Box
+                    key={game.name + game.platform}
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: `${left}px`,
+                      zIndex: z,
+                      width: 150,
+                      height: 210,
+                      borderRadius: 3,
+                      overflow: "hidden",
+                      boxShadow: 4,
+                      background: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transform: `rotate(${rotate}deg)`,
+                      transition: "transform 0.2s",
+                    }}
+                  >
+                    <img
+                      src={game.imgs?.small_url || "/placeholder.svg?height=210&width=150"}
+                      alt={game.formattedName}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </Box>
+                );
+              })}
+            </Box>
           </Box>
         </Stack>
       </Container>
